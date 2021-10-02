@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+<style>
+
+    
+</style>
+
+</head>
+<body>
+    
+    <div style="display: flex;align-items: center; justify-content: center; height: 550px;margin-left: 150px;width: 550px;">
+    <canvas id="myChart"></canvas>
+    </div>
+<script>
+    
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var mixedChart = new Chart(ctx, {
+    data: {
+        datasets: [{
+            type: 'bar',
+            label: 'Progress%',
+            data: {{p}},
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgba(250, 68, 84,0.6)'
+        }, {
+            type: 'line',
+            label: 'Average Working Hrs',
+            data: {{hrs}},
+            fill: false,
+            borderColor: 'rgb(54, 162, 235)'
+        }],
+        labels: [
+                {% for value in r %}
+                    "{{value}}",
+                {% endfor %}
+                ]
+    }
+});
+ 
+    </script>
+    
+</body>
+</html>

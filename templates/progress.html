@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    
+    <div id="chart">
+    </div>
+
+
+
+    <script>
+
+        
+      
+var options = {
+          series: [{
+            name: "Progress in %:",
+            data: [
+                
+                {% for i in final_progress %}
+                    "{{i}}",
+                {% endfor %}
+            ]
+        }],
+          chart: {
+          height: 350,
+          type: 'bar',
+          zoom: {
+            enabled: false
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'straight'
+        },
+        title: {
+          text: 'Progress Chart',
+          align: 'left'
+        },
+        grid: {
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        xaxis: {
+          categories: [
+              
+          {% for i in members %}
+                    "{{i}}",
+                {% endfor %}
+          ],
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+      
+      
+        </script>
+</body>
+</html>
